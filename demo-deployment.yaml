@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: go-true
+  name: go-true
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-true
+  template:
+    metadata:
+      labels:
+        app: go-true
+    spec:
+      containers:
+      - image: ghcr.io/chenwei791129/go-true:main
+        livenessProbe:
+          exec:
+            command:
+            - /bin/true
+        name: go-true
+        readinessProbe:
+          exec:
+            command:
+            - /bin/true
